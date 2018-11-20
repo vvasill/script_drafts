@@ -1,0 +1,37 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[left=2.0cm, top=3.0cm, right=2.0cm, bottom=2.5cm]{geometry}
+\usepackage{indentfirst}
+\sloppy
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\begin{document}
+
+$$ds^2 = g_{00}dt_H^2 + g_{i0}dx^idt_H + g_{0i}dt_Hdx^i + g_{ij}dx^idx^j = g_{00}dt_H^2 + g_{ij}dx^idx^j$$
+
+$$ds^2 = \tilde g_{00}dt^2 + \tilde g_{i0}dX^idt + \tilde g_{0i}dtdX^i + \tilde g_{ij}dX^idX^j $$
+
+$$x^i = \frac{1}{a}X^i$$
+$$t_H = t - \frac{H}{2c^2}X_iX^i$$
+
+$$dx^i = \frac{1}{a}dX^i$$
+$$dt_H = (1 - \frac{\ddot a}{2ac^2}X_iX^i + \frac{\dot a}{2a^2c^2}X_iX^i)dt - \frac{H}{2c^2}X_idX^i \approx dt - \frac{H}{2c^2}X_idX^i$$
+
+$$dx^idx^j = \frac{1}{a^2}dX^idX^j$$
+$$dx^idt_H = \frac{1}{a}dX^idt - \frac{H}{2ac^2}X^jdX^idX^j$$
+$$dt_Hdt_H = dtdt - 2\frac{H}{2c^2}X_idtdX^i$$
+
+$$\tilde g_{00} = g_{00}(t, X^i) = $$
+$$\tilde g_{ij} = g_{ij}(t, X^i)$$
+$$\tilde g_{i0} = g_{00}(t, X^i)(-2\frac{H}{2c^2}X_i)$$
+
+$$\frac{dG}{dt_H} = \frac{dG}{dt}\frac{\partial t}{\partial t_H} = \frac{dG}{dt}$$
+
+$$\tilde g_{00} = -1 + \frac{2GM}{c^2|\bold{X}|} - \frac{M}{c^3}\frac{dG}{dt}$$
+$$\tilde g_{ij} = 1 + $$
+$$\tilde g_{i0} = 2\frac{H}{2c^2}X_i - \frac{2GMHX_i}{c^4|\bold{X}|} + \frac{MHX_i}{c^5}\frac{dG}{dt}$$
+
+\end{document}
