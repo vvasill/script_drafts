@@ -1,0 +1,90 @@
+\documentclass[oneside, final, 14pt]{extreport}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[left=1.5cm, top=1.5cm, right=1.5cm, bottom=2.0cm]{geometry}
+\usepackage{multicol}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb} 
+\sloppy
+
+\begin{document}
+
+\begin{equation}
+\begin{split}
+\frac{d}{dt}(\frac{1}{r}) = \text{рассматриваем функцию r = r(t)} = -\frac{1}{r^2}\frac{dr}{dt} = \\ \text{просто расписываем модуль вектора через скалярное произв.} = -\frac{1}{r^2}\frac{d\sqrt{\textbf{rr}}}{dt} =\\ = \text{теперь рассматриваем ф-цию f(\textbf{rr})} = -\frac{1}{r^2 2\sqrt{\textbf{rr}}}\frac{d\textbf{rr}}{dt} = \\ = -\frac{1}{2r^3}\frac{d\textbf{rr}}{dt} = -\frac{1}{2r^3}(\frac{d\textbf{r}}{dt}\textbf{r} + \textbf{r}\frac{d\textbf{r}}{dt}) = -\frac{2}{2r^3}(\textbf{vr}) 
+\end{split}
+\end{equation}
+
+\newpage
+
+$$ \int (ab + u\dot v) dt = \int (ab) dt + \int u\dot v dt = \int (ab) dt + v|^{t_1}_{t_2}u - \int \dot v u dt = \int (ab - \dot vu) dt + v|^{t_1}_{t_2}u$$
+
+Здесь $$ a = \frac{\partial L}{\partial q}, b = \delta q, u = \frac{\partial L}{\partial \dot q}, v = \delta \dot q, \int v dt = b $$
+
+
+
+\newpage
+\textit{простые арифметические упрощения доделайте сами, пожалуйста}
+
+1. а) $\displaystyle\frac{dy}{dx} = \frac{4}{2\sqrt{4x+3}} + \frac{3 \cdot 3x^2}{2(x^3 + x + 1)^{3/2}}$
+
+б) $\displaystyle\frac{dy}{dx} = 2(e^{cosx} + 3) \cdot (e^{cosx})' = 2(e^{cosx} + 3) \cdot e^{cosx} \cdot (cosx)' = 2(e^{cosx} + 3) \cdot e^{cosx} \cdot (-sinx)$
+
+в) $\displaystyle\frac{dy}{dx} = \frac{1}{sin(2x+5)} \cdot (sin(2x+5))' = \frac{1}{sin(2x+5)} \cdot cos(2x+5) \cdot (2x+5)' = \frac{1}{sin(2x+5)} \cdot cos(2x+5) \cdot 2$
+
+2. а) $\displaystyle\frac{dy}{dx} = \frac{1}{\sqrt{a^2 - x^2}} - \frac{x \cdot (-2x)}{2(a^2 - x^2)^{3/2}}$
+
+б) $\displaystyle\frac{dy}{dx} = \frac{2sinx \cdot cosx}{2 + 3cos^2x} + \frac{sin^2x \cdot (-1) \cdot 3 \cdot 2cosx \cdot (-sinx)}{(2+3cos^2x)^{2}}$
+
+в) $\displaystyle\frac{dy}{dx} = \frac{x \cdot \frac{1}{x} + \ln x}{x - 1} + \frac{x\ln x \cdot (-1)}{(x-1)^2}$
+
+~\\
+
+3. $n = 1600$, $m = 1100$, $p = 0.7$, $q = 1 - p = 0.3$
+Посчитаем по локальной теореме Муавра -- Лапласа (n и m достаточно большие).
+
+$\displaystyle x_m = \frac{m - np}{\sqrt{npq}} \approx $
+
+$\displaystyle P = \frac{1}{\sqrt{2\pi npq}}e^{-x^2/2} \approx 0.039$
+
+~\\
+
+4. Пункт в) самый простой, начнём с него. В этом случае нужно посчитать произведение всех трёх вероятностей, потому что независимые события должны произойти  одновременно. Таким образом: $0.9 * 0.95 * 0.85 \approx 0.727$
+
+Для пунктов а) и б) нужно воспользоваться теоремой о сложении вероятностей совместных (т.е. таких, которые могут произойти одновременно) событий:
+\begin{equation}
+\begin{split}
+P(A \cup B \cup C \textrm{ (это значит, xoтя бы одно)}) = P(A) + P(B) + P(C) - \\ - P(A \cap B) - P(B \cap C) - P(A \cap C) + P(A \cap B \cap C)
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+P(\textrm{xoтя бы два}) = P(A \cap B) + P(B \cap C) + P(A \cap C) - 2*P(A \cap B \cap C) 
+\end{split}
+\end{equation}
+
+а) $\displaystyle P(A \cup B \cup C) = 0.95 + 0.9 + 0.85 - 0.95*0.9 - 0.95*0.85 - 0.9*0.85 + 0.9*0.95*0.85 \approx 0.9993$.
+
+б) $\displaystyle P(\textrm{xoтя бы два}) = 0.95*0.9 + 0.95*0.85 + 0.9*0.85 - 2*0.9*0.95*0.85 = 0.974$.
+
+~\\
+
+5. 1) Плоность вероятности: $\displaystyle \rho(x) = \frac{d}{dx}F(x) = 
+\begin{cases}
+0, x \leq 0\\
+2x, 0 < x \leq 1\\
+0, x > 1
+\end{cases}$
+
+2) Математическое ожидание: $\displaystyle M[x] = \int_0^1{x\cdot2xdx} = 2\int_0^1{x^2dx} = 2\frac{x^3}{3}\bigm|_0^1 = \frac{2}{3}$
+
+3) Дисперсия: $\displaystyle D = \sigma^2 = M[(x-M[x])^2] = \int_0^1{(x-2/3)^2\rho(x)dx} = \int_0^1{(x-2/3)^22xdx} = 1/18$
+
+~\\
+
+6. а) $\displaystyle f(x) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$. Здесь $\mu$ --- мат. ожидание, $\sigma^2$ --- дисперсия
+
+$\displaystyle P(\alpha, \beta) = \int_{\alpha}^{\beta}{\frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{(x-a)^2}{2\sigma^2}}dx} = ... = 1/2 * \frac{2}{\sqrt{\pi}}\left(\int_{0}^{\frac{\beta-a}{\sqrt2 \sigma}}e^{-t^2}dt + \int_{\frac{\alpha-a}{\sqrt2 \sigma}}^{0}e^{-t^2}dt\right) = \textrm{получились два интеграла ошибок, их значения берём из таблицы}, (t = \frac{x-a}{\sqrt2 \sigma}) = 1/2 * (0.546 + 0.954) = 0.75$
+\end{document}
