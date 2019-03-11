@@ -1,0 +1,74 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[left=2.0cm, top=3.0cm, right=2.0cm, bottom=2.5cm]{geometry}
+\usepackage{indentfirst}
+\sloppy
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\begin{document}
+\begin{flushright}
+	\today{}
+	
+	Белоконь Александр, 532
+\end{flushright}
+
+\textbf{\textit{Домашнее задание №1}}
+\vskip 5pt
+\hrule
+\vskip 15pt
+
+В качестве канонического представления данных можно использовать следующее:
+\begin{equation}
+	\boxed{(n, S, R)}
+\end{equation}
+где $S = \sum_{i = 1}^{n}x_i$, $R = \sum_{i = 1}^{n}x_ix_i^T$.
+
+Покажем, что это действительно так. Распишем выражение для выборочной ковариационной матрицы (предварительно заметив, что $X = \frac{S}{n}$):
+
+\begin{equation}
+	\label{main}
+	\begin{split}
+		V = \frac{1}{n-1}\sum_{i = 1}^{n}(x_i - X)(x_i - X)^T = \frac{1}{n-1}\sum_{i = 1}^{n}(x_ix_i^T - x_iX^T - Xx_i^T + XX^T) = \\ = \frac{1}{n-1}\left(\sum_{i = 1}^{n}x_ix_i^T - \sum_{i = 1}^{n}x_iX^T - \sum_{i = 1}^{n}Xx_i^T + \sum_{i = 1}^{n}XX^T\right) = \\ = \frac{1}{n-1}\left(\sum_{i = 1}^{n}x_ix_i^T - \left(\sum_{i = 1}^{n}x_i\right)X^T - X\sum_{i = 1}^{n}x_i^T + nXX^T\right) = \\ = \frac{1}{n-1}\left(R - SX^T - XS^T + nXX^T\right) = \frac{1}{n-1}\left(R - \frac{SS^T}{n} - \frac{SS^T}{n} + \frac{SS^T}{n}\right) = \frac{1}{n-1}\left(R - \frac{SS^T}{n}\right)
+	\end{split}
+\end{equation}
+
+Теперь очевидно, что набора $(n, S, R)$ вполне достаточно для требуемого представления информации. Проверим, выполняются ли свойства канонического предтавления.
+
+\begin{enumerate}
+\item[(a)] \textbf{Существование и единственность} Для любого набора данных очевидно, что параметры $n$, $S$ и $R$ существуют. Также очевидно, что рассчитать их для фиксированного набора данных можно только единственным образом (результат суммирования не зависит от порядка суммирования).
+\item[(b)] \textbf{Полнота} Результатом обработки данных явяются $X$ и $V$.
+Из необработанных данных они вычисляются так:
+
+\begin{equation}
+	\label{raw_data}
+	X = \sum_{i = 1}^{n}x_i; V = \frac{1}{n-1}\sum_{i = 1}^{n}(x_i - X)(x_i - X)^T
+\end{equation}
+
+Используя каноническое представление, определение величин $S$ и $R$ и соотношение \ref{main} получаем:
+\begin{equation}
+	\label{can_data}
+	X = \frac{S}{n}; V = \frac{1}{n-1}\left(R - \frac{SS^T}{n}\right)
+\end{equation}
+
+Т.к. при выводе соотношения \ref{main} использовались только тождественные преобразования, то вычисление величин по формулам \ref{can_data} полностью эквивалентно их вычислению по формулам \ref{raw_data}.
+
+\item[(c)] \textbf{Элементарная} каноническая информация: $n = 1$, $S = x_1$, $R = x_1x_1^T$
+
+\item[(d)] \textbf{Пустая} каноническая информация: $n = 0$, $S = \left(\begin{array}{c}0 \\ \vdots \\ 0\end{array}\right)$, $R = \left(\begin{array}{ccc}0 & \ldots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \ldots & 0 \end{array}\right)$. Здесь $dim(S) = m$, $dim(S) = m \times m$. 
+
+\item[(e)] \textbf{Объединение} Пусть есть два набора данных $(n_1, S_1, R_1)$ и $(n_2, S_2, R_2)$. Тогда в силу аддитивности их объединение можно рассчитать так: $$(n, S, R) = (n_1, S_1, R_1) \oplus (n_2, S_2, R_2) = (n_1 + n_2, S_1 + S_2, T_1 + T_2)$$.
+
+\item[(f)] \textbf{Обновление} Пусть $(n_0, S_0, R_0)$ --- текущий набор данных, $x$ --- новый вектор данных. Тогда информация обновляется так: $$(n, S, R) = (n_0 + 1, S_0 + x, T_0 + xx^T)$$
+
+\item[(g)] \textbf{Минимальное} число наблюдений: $n_{min} = 2$ (в силу определения выборочной ковариационной матрицы)
+
+\item[(h)] \textbf{Компактность и эффективность} Для хранения сырой информации необходимо $N_{raw} = n \times m$ чисел, для хранения информации в каноническом представлении --- $N_{can} = 1 + m + m \times m$ чисел. $N_{can}$ существенно меньше $N_{raw}$ при $n \gg m$.
+Такое представление данных эффективно, т.к. обеспечивает выигрыш в числе шагов, необходимых для обработки. 
+
+\end{enumerate}
+
+\end{document}
