@@ -1,0 +1,41 @@
+\documentclass[12pt, a4paper]{article}     
+\usepackage[left=2.0cm, top=2.0cm, right=2.0cm, bottom=2.5cm]{geometry}
+\usepackage{polyglossia}
+\setdefaultlanguage[spelling=modern]{russian}
+\setotherlanguage{english}
+\defaultfontfeatures{Ligatures={TeX}}
+\setmainfont{Liberation Serif}
+\usepackage{indentfirst}
+\usepackage{parcolumns}
+
+\newcommand{\qu}[1]{``#1''}%%%{\textquotedblleft#1\textquotedblright}
+
+\begin{document}
+
+\begin{flushright}
+	smth
+\end{flushright}
+
+\begin{center}
+	\textbf{smth}
+	\vskip 5pt
+	\hrule
+	\vskip 15pt
+\end{center}
+
+\vskip 15pt
+\begin{parcolumns}{2}
+	\colchunk
+	{
+		smth
+	}
+	\colchunk
+	{
+		smth
+	}
+	\colplacechunks
+\end{parcolumns}
+\vskip 15pt
+
+\end{document}
+
