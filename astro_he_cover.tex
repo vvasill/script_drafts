@@ -1,0 +1,35 @@
+\documentclass[extrafontsizes, 30pt, a4paper]{article}     
+\usepackage[left=2.0cm, top=2.0cm, right=2.0cm, bottom=2.5cm]{ geometry }
+
+\usepackage{ polyglossia }
+\setdefaultlanguage[spelling=modern]{russian}
+\setotherlanguage{english}
+\defaultfontfeatures{Ligatures={TeX}}
+\setmainfont{Carlito-Regular}
+\newfontfamily\otherfont{Liberation Serif}
+
+\usepackage{ indentfirst }
+\usepackage{ parcolumns }
+\usepackage{ tabularx }
+\usepackage{color}
+
+\newcommand{\qu}[1]{``#1''}%%%{\textquotedblleft#1\textquotedblright}
+
+\definecolor{red}{rgb}{0.82, 0.1, 0.26}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\newpage
+\begin{tabularx}{\textwidth}{ p{0.3\textwidth} p{0.1\textwidth} p{0.5\textwidth} }
+	\rotatebox{90}{\Huge \otherfont{\textcolor{red}{А}строфизика}}\rotatebox{90}{\Large высоких энергий} & & конспект лекций \\[2 pt]
+	~ & ~ & К.А.~Постнова \\[3 pt]
+\end{tabularx}
+
+\centering
+\vspace{\fill}
+2019
+
+\end{document}
+
