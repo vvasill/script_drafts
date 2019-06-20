@@ -1,0 +1,130 @@
+\documentclass[xelatex]{beamer}
+
+\usefonttheme{professionalfonts}
+\usepackage{ fontspec }
+\usepackage{ polyglossia }
+\usepackage{ indentfirst }
+\usepackage{ parcolumns }
+\usepackage{ enumitem }
+\usepackage{ dashrule }
+\usepackage{ tikz }
+\usepackage{ amsmath, amsfonts, amssymb }
+\usepackage{ gensymb }
+\usepackage{ graphicx }
+\usepackage{ lipsum } 
+
+\setdefaultlanguage{english}
+\defaultfontfeatures{Ligatures={TeX}}
+\setmainfont{GlacialIndifference-Regular}
+\newfontfamily\mathfont{Latin Modern Roman}
+\newfontfamily\otherfont{Latin Modern Roman Caps}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% frametitling
+\definecolor{red}{rgb}{0.82, 0.1, 0.26}
+
+\setbeamerfont{frametitle}{size=\fontsize{28}{43.2}}
+\setbeamerfont{framesubtitle}{size=\fontsize{20}{24}}
+\setbeamercolor{frametitle}{fg=red}
+\setbeamercolor{framesubtitle}{fg=red}
+
+\newcommand{\myframetitle}[1]{%
+	\frametitle{\centerline{#1}}%
+	\vskip-120pt%
+	\dottedrule{1.0\textwidth}%
+	\vskip10pt%
+}
+\makeatletter
+\setbeamertemplate{frametitle}{%
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \begin{beamercolorbox}[sep=0.5cm,left,wd=\the\@tempdima]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-0.25ex%
+    \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+    \strut\hskip10pt\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox..
+  \end{beamercolorbox}%
+	{\small\dottedrule{1.0\textwidth}}%
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%for underlines — big thanks for https://github.com/alexwlchan 
+\usepackage{ contour }
+\usepackage{ ulem }
+
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \circled --- thanks for https://tex.stackexchange.com/users/213/stefan-kottwitz
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%rule
+\newcommand{\dottedrule}[1]{%
+   \parbox{#1}{\vskip10pt\dots}}
+\renewcommand\dots{\leavevmode\xleaders\hbox{$\bullet\text{\hskip2pt}$}\hfill\kern0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% frame 1 %%%
+\begin{document}
+
+\begin{frame}
+	\frametitle{Important}
+
+	\myuline{very important} formula:
+	\begin{equation}
+		E = mc^2
+	\end{equation}
+	
+	\begin{equation}
+		pV = \nu RT
+	\end{equation}		
+	
+	\begin{equation}
+		\int_a^b x^2 dx
+	\end{equation}				
+\end{frame} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% frame 2 %%%
+\begin{frame}
+	\frametitle{List of examples}
+	\begin{enumerate}
+		\item[\circled{1}]
+		\item[\circled{2}]
+		\item[\circled{3}]
+		\item[\circled{4}]
+	\end{enumerate}
+\end{frame} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% frame 3 %%%
+\begin{frame}
+	\frametitle{Lorem Ipsum}
+	\lipsum[1]
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% frame last %%%
+\begin{frame}
+	\textcolor{red}{\Huge Thank you for your attention!}
+\end{frame}  
+
+\end{document}
