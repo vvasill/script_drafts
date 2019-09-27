@@ -11,8 +11,9 @@ cd $1
 for file in $(find './' -name '*.png');
 do
 	#new name creating
-	name=$( echo $file | cut -d "." -f 2 )
-	out='.'$name'.eps'
+	out=$( echo $file | sed 's/png/eps/' )
+	
+	echo $out
 	
 	#converting
 	convert $file $out
